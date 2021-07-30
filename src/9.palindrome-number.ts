@@ -12,15 +12,15 @@ function isPalindrome1(x: number): boolean {
 
 // @lc code=start
 function isPalindrome(x: number): boolean {
-  if (x < 0) return false;
+  if (x < 0 || (x % 10 === 0 && x !== 0)) return false;
   let temp = x;
-  let res = 0;
-  while (temp > 0) {
+  let reverted = 0;
+  while (reverted < temp) {
     const last = temp % 10;
     temp = Math.floor(temp / 10);
-    res = res * 10 + last;
+    reverted = reverted * 10 + last;
   }
-  return res === x;
+  return reverted === temp || Math.floor(reverted / 10) === temp;
 }
 // @lc code=end
 
